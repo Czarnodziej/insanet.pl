@@ -1,6 +1,10 @@
 {
     "require": {
         "silex/silex": "~2.0",
-        "twig/twig": "^1.24"
+        "twig/twig": "^1.24",
+        "monolog/monolog": "^1.20",
+        "symfony/config": "^3.1",
+        "symfony/yaml": "^3.1",
+        "doctrine/dbal": "~2.2"
     }
 }
