@@ -6,9 +6,10 @@ $app['debug'] = true;
 
 #register services
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__.'/views',
+    'twig.path' => __DIR__.'/../views',
 ));
 $app->register(new Silex\Provider\LocaleServiceProvider());
+
 $app->register(new Silex\Provider\SessionServiceProvider());
 
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
@@ -32,7 +33,9 @@ $app->get('/test', function () {
 });
 
 $app->get('/hello/{name}', function ($name) use ($app) {
-    return 'Sziema '.$app->escape($name);
+    return $app['twig']->render('hello.html.twig', array(
+        'name' => $name,
+    ));
 });
 
 $app->run();
