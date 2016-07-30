@@ -1,0 +1,26 @@
+{
+  "name": "insanet-silex",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "jquery": "1.11.*",
+    "jquery-ui-bundle": "~1.11.*",
+    "bootstrap": "3.3.*",
+    "font-awesome": "4.6.*"
+  },
+  "devDependencies": {
+    "del": "*",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "*",
+    "gulp-clean": "*",
+    "gulp-concat": "*",
+    "gulp-environments": "*",
+    "gulp-if": "*",
+    "gulp-imagemin": "*",
+    "gulp-sass": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*",
+    "gulp-uglifycss": "*",
+    "gulp-util": "^3.0.7"
+  }
+}

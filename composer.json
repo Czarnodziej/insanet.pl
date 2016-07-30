@@ -3,8 +3,14 @@
         "silex/silex": "~2.0",
         "twig/twig": "^1.24",
         "monolog/monolog": "^1.20",
+        "symfony/form": "^3.1",
+        "symfony/validator": "^3.1",
         "symfony/config": "^3.1",
-        "symfony/yaml": "^3.1",
-        "doctrine/dbal": "~2.2"
+        "symfony/translation": "^3.1",
+        "symfony/twig-bridge": "^3.1"
+    },
+    "require-dev": {
+        "symfony/browser-kit": "^3.1",
+        "symfony/css-selector": "^3.1"
     }
 }
