@@ -17,9 +17,9 @@ var production  = environments.production;
 
 environments.current(development);
 
-var resourceDirectory = 'app/Resources/public/';
+var resourceDirectory = 'resource/';
 
-var resourceViewsDirectory = 'app/Resources/views/';
+var resourceViewsDirectory = 'resource/view/';
 
 var destinationDir = 'web/';
 
@@ -79,32 +79,6 @@ gulp.task('jsCustom', function () {
 });
 //
 
-//CSS TASK: write one minified css file out of bootstrap.sass and all of my custom sass files
-gulp.task('cssVendor', function () {
-  return gulp.src(paths.stylesVendor)
-    .pipe(production(sourcemaps.init()))
-    .pipe(gulpif(/[.]sass/, sass()))
-    .pipe(concat('vendor.css'))
-    .pipe(autoprefixer({
-      browsers: ['last 3 versions'],
-      cascade:  false
-    }))
-    .pipe(production(uglifycss()))
-    .pipe(production(sourcemaps.write('../maps')))
-    .pipe(gulp.dest(destinationDir + 'css'));
-});
-
-gulp.task('cssCustom', function () {
-  return gulp.src(paths.stylesCustom)
-    .pipe(gulpif(/[.]sass/, sass()))
-    .pipe(concat('custom.css'))
-    .pipe(autoprefixer({
-      browsers: ['last 3 versions'],
-      cascade:  false
-    }))
-    .pipe(gulp.dest(destinationDir + 'css'));
-});
-
 gulp.task('cssConcat', function(){
   return gulp.src(paths.stylesCustom.concat(paths.stylesVendor))
   .pipe(uglifycss())
@@ -123,10 +97,6 @@ gulp.task('jsConcat', function(){
 //clean images folder
 gulp.task('clean-jquery-ui-images-vendor', function () {
   return del(destinationDir + 'css/images/**/*');
-});
-
-gulp.task('clean-datatables-images-vendor', function () {
-  return del(destinationDir + 'images/**/*');
 });
 
 //clean images folder
@@ -151,11 +121,9 @@ gulp.task('imagesCustom', ['clean-images-custom'], function () {
 // Rerun the task when a file changes
 gulp.task('watch', function () {
   gulp.watch(paths.scriptsVendor, ['jsVendor']);
-  gulp.watch(paths.stylesVendor, ['cssVendor']);
   gulp.watch(paths.imagesVendor.jqueryUi, ['imagesVendorJqueryUi']);
 
   gulp.watch(paths.scriptsCustom, ['jsCustom']);
-  gulp.watch(paths.stylesCustom, ['cssCustom']);
   gulp.watch(paths.imagesCustom, ['imagesCustom']);
 });
 
@@ -165,6 +133,5 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest(destinationDir + 'fonts'));
 });
 
-gulp.task('default', ['jsVendor', 'cssVendor', 'jsConcat',
-                      'jsCustom','cssCustom','cssConcat',
+gulp.task('default', ['jsVendor', 'jsConcat', 'jsCustom', 'cssConcat',
                       'imagesVendorJqueryUi', 'imagesCustom', 'fonts']);

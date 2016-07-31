@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 $app = new Silex\Application();
 
-//$app['debug'] = true;
+$app['debug'] = true;
 
 //register services
 $app->register(
