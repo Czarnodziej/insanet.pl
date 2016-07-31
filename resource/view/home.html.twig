@@ -1,0 +1,276 @@
+{% extends 'main.html.twig' %}
+{% block body_content %}
+
+    <!-- Side Menu -->
+    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle">
+                <i class="fa fa-times"></i>
+            </a>
+            <li class="sidebar-brand"><a href="/">INSANET</a>
+            </li>
+            <li><a href="#top">{{ 'sidebar.home'|trans }}</a>
+            </li>
+            <li><a href="#about">{{ 'sidebar.author'|trans }}</a>
+            </li>
+            <li><a href="#skills">{{ 'sidebar.skills'|trans }}</a>
+            </li>
+            <li><a href="#portfolio">{{ 'sidebar.portfolio'|trans }}</a>
+            </li>
+            <li><a href="#technology">{{ 'sidebar.technology'|trans }}</a>
+            </li>
+            <li><a href="#lastfm">{{ 'sidebar.bonus'|trans }}</a>
+            </li>
+            <li><a href="#contact">{{ 'sidebar.contact'|trans }}</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /Side Menu -->
+
+    <!-- Full Page Image Header Area -->
+    <div id="top" class="header">
+        <div class="vert-text">
+            <h1 class="title-h1">Insanet</h1>
+
+            <h3>
+            <span class="title-span">
+                {{ 'main.header.insanely'|trans }} {{ 'main.header.creations'|trans }},
+                {{ 'main.header.crazily'|trans }} {{ 'main.header.enchanting'|trans }}.
+            </span>
+            </h3>
+            <a href="#about" class="btn btn-default btn-lg">{{ 'main.header.clickme'|trans }}</a>
+        </div>
+    </div>
+    <!-- /Full Page Image Header Area -->
+
+    <!-- Intro -->
+    <div id="about" class="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <h2>{{ 'intro.tagline'|trans }}</h2>
+
+                    <p>{{ 'intro.tagline2'|trans }}.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Intro -->
+
+    <!-- Skills -->
+    <div id="skills" class="skills">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <h2>{{ 'skills.title'|trans }}</h2>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2 text-center">
+                    <div class="skills-item">
+                        <i class="skills-icon fa fa-html5"></i>
+                        <h4>{{ 'skills.frontend.title'|trans }}</h4>
+
+                        <p>{{ 'skills.frontend.description'|trans }}</p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="skills-item">
+                        <i class="skills-icon fa fa-file-code-o"></i>
+                        <h4>{{ 'skills.backend.title'|trans }}</h4>
+
+                        <p>{{ 'skills.backend.description'|trans }}</p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="skills-item">
+                        <i class="skills-icon fa fa-terminal"></i>
+                        <h4>{{ 'skills.admin.title'|trans }}</h4>
+
+                        <p>{{ 'skills.admin.description'|trans }}</p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="skills-item">
+                        <i class="skills-icon fa fa-smile-o"></i>
+                        <h4>{{ 'skills.joke.title'|trans }}</h4>
+
+                        <p>{{ 'skills.joke.description1'|trans }}<br>
+                            {{ 'skills.joke.description2'|trans }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Skills -->
+
+    <!-- Portfolio -->
+    <div id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-2 text-center">
+                    <div class="portfolio-item">
+                        <a href="http://laravel.insanet.pl" target="_blank">
+
+                            <img class="img-portfolio img-responsive" src="{{ asset('img/laraveil.png') }}"
+                                 alt="Laravel"/>
+                        </a>
+                        <h2><span>Laravel Blog CMS</span></h2>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="portfolio-item">
+                        <a href="http://gifland.insanet.pl" target="_blank">
+                            <img class="img-portfolio img-responsive" src="{{ asset('img/gifland.png') }}"
+                                 alt="Gifland"/>
+                        </a>
+                        <h2><span>Gifland</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Portfolio -->
+
+    <!-- Technology -->
+    <div id="technology" class="technology">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <h2>{{ 'technology.title'|trans }}</h2>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-2 text-center">
+                    <div class="technology-item">
+                        <a href="http://www.phptherightway.com">
+                            <img class="img-technology img-responsive" src="{{ asset('img/phptrw.png') }}"
+                                 alt="PHP: The Right Way"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="technology-item">
+                        <a href="http://symfony.com" target="_blank">
+                            <img class="img-technology img-responsive" src="{{ asset('img/symfony_black_03_res.png') }}"
+                                 alt="Symfony2 PHP Framework"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-md-offset-2 text-center">
+                    <div class="technology-item">
+                        <a href="https://developer.mozilla.org/pl/docs/Web/JavaScript" target="_blank">
+                            <img class="img-technology img-responsive" src="{{ asset('img/js-res.jpg') }}"
+                                 alt="JavaScript"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="technology-item">
+                        <a href="http://git-scm.com/" target="_blank">
+                            <img class="img-technology img-responsive" src="{{ asset('img/Git-Icon-1788C.png') }}"
+                                 alt="GIT"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Technology -->
+
+    <!-- LastFM -->
+    <div class="lastfm" id="lastfm">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="lastfm-top-tracks" title="Powered By: LastFM">
+                        {#{% if tracks %}#}
+                            {#<h4><a href="http://www.lastfm.pl/user/PagodeMC">{{ 'lastfm.favs.title'|trans }}:</a></h4>#}
+                            {#<ol>#}
+                                {#{% for track in tracks.toptracks.track %}#}
+                                    {#<li>#}
+                                        {#<a href="{{ track.url }}">#}
+                                            {#{{ track.artist.name }} - {{ track.name }}#}
+                                        {#</a>#}
+                                    {#</li>#}
+                                {#{% endfor %}#}
+                            {#</ol>#}
+                        {#{% else %}#}
+                            {#<p>{{ 'lastfm.error1'|trans }}</p>#}
+                            {#<p>{{ 'lastfm.error2'|trans }}</p>#}
+                        {#{% endif %}#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /LastFM  -->
+
+    <!-- Contact Form -->
+    <div id="contact">
+        <div class="text-center contact-form">
+
+            {% for label, flashes in app.session.flashbag.all %}
+                {% for flash in flashes %}
+                    <div class="alert alert-{{ label }}">
+                        {{ flash | trans }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            <div class="panel-heading contact-heading">
+                <h4>{{ 'contact.title'|trans }}</h4>
+            </div>
+            <div class="panel-body>
+            <form action="#contact" method="post"
+            class="form-horizontal">
+            {#{{ form_widget(form) }}#}
+            {#<div>#}
+                {#<input class="btn btn-success btn-block button-submit"#}
+                       {#type="submit" value="{{ 'contact.submit'|trans }}"/>#}
+            {#</div>#}
+            {#</form>#}
+        </div>
+    </div>
+    <!-- /Contact Form -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+
+            <div class="row footer">
+
+                <div class="col-md-6 col-md-offset-3 text-center">
+
+                    <ul class="list-inline">
+                        <li><a href="https://www.facebook.com/marcin.marcinowy.5"><i
+                                        class="fa fa-facebook fa-3x"></i></a>
+                        </li>
+                        <li><a href="https://twitter.com/Czarnodziej"><i class="fa fa-twitter fa-3x"></i></a>
+                        </li>
+                        <li><a href="https://github.com/Czarnodziej"><i class="fa fa-github fa-3x"></i></a>
+                        </li>
+                    </ul>
+                    <div class="top-scroll">
+                        <a href="#top"><i class="fa fa-arrow-circle-up scroll fa-4x"></i></a>
+                    </div>
+                    <hr>
+                    <p>
+                        {#{{ 'lastmod.content'|trans }} {{ date|date("d.m.Y")}}#}
+                    </p>
+
+                    <p>&copy; Insanet.eu {{ "now"|date("Y") }}</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /Footer -->
+{% endblock %}
+

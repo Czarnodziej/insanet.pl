@@ -1,0 +1,337 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 2014-07-05, 13:02:06
+    Author     : Czarnodziej <pagodemc@gmail.com>
+*/
+
+/*Based on https://github.com/IronSummitMedia/startbootstrap/tree/master/templates/stylish-portfolio*/
+/* Global Styles */
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.title-h1,
+.title-span {
+    color: white;
+    text-shadow: 0px 0px 3px #000, -2px -2px #000, 2px 2px #000;
+    font-weight: 700;
+}
+
+.title-span {
+    font-size: 1.5em;
+    background-color: rgba(0,0,0,0.6);
+    padding: 0.1em;
+    border-radius: 10px
+}
+
+.vert-text {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.vert-text h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 4.5em;
+    font-weight: 700;
+}
+
+/* Side Menu */
+
+#sidebar-wrapper {
+    margin-right: -250px;
+    right: 0;
+    width: 250px;
+    background: #000;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    line-height: 40px;
+    text-indent: 20px;
+}
+
+.sidebar-nav li a {
+    color: #999999;
+    display: block;
+    text-decoration: none;
+}
+
+.sidebar-nav li a:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+    text-decoration: none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 55px;
+    line-height: 55px;
+    font-size: 18px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+#menu-toggle {
+    top: 0;
+    right: 0;
+    position: fixed;
+    z-index: 1;
+}
+
+#sidebar-wrapper.active {
+    right: 250px;
+    width: 250px;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.toggle {
+    margin: 5px 5px 0 0;
+}
+
+/* Full Page Image Header Area */
+
+.header {
+    display: table;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: url(../img/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* Intro */
+
+.intro {
+    padding: 50px 0;
+}
+
+/* Services */
+
+.skills {
+    background: rgba(17, 61, 104, 1);
+    padding: 40px 0;
+    color: #ffffff;
+}
+
+.skills-item {
+    margin-bottom: 15px;
+}
+
+i.skills-icon {
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 56px;
+    width: 140px;
+    height: 140px;
+    line-height: 136px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Portfolio */
+
+.portfolio {
+    color: #ffffff;
+    /*display: table;*/
+    /*height: 420px;*/
+    width: 100%;
+    background: url(../img/portfolio.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 50px 0;
+}
+
+.portfolio span {
+    /*color: white;*/
+    background-color: black;
+    opacity: 0.7;
+}
+
+.img-portfolio {
+    margin: 0 auto;
+    width: 250px
+}
+
+.portfolio-item {
+    margin-bottom: 25px;
+}
+
+
+/* Technology */
+
+.technology {
+    padding: 50px 0;
+}
+
+.technology-item {
+    margin-bottom: 25px;
+}
+
+.img-technology {
+    margin: 0 auto;
+    width: 250px
+}
+
+/* LastFM */
+
+.lastfm {
+    color: #ffffff;
+    background: #0a5175;
+    padding: 20px 0;
+
+}
+
+.lastfm-top-tracks {
+    width: 400px;
+    position: relative;
+    left: -25px;
+}
+
+.lastfm-top-tracks a{
+    color: white;
+}
+.lastfm-top-tracks li{
+    color: white;
+    padding: 5px;
+}
+
+
+
+.lastfm-top-tracks h4 {
+    text-align: center;
+}
+
+/* Contact Form */
+
+.contact-form {
+    margin: 0 auto;
+    width: 300px
+}
+
+.contact-form input,
+.contact-form textarea {
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.contact-form .panel-body {
+    padding : 2px;
+}
+
+.contact-heading,
+.contact-heading h4 {
+    padding: 0;
+}
+
+.button-submit {
+    width: inherit;
+}
+
+/* Footer */
+
+footer {
+    background: rgba(181, 209, 237, 1);
+    padding: 20px 0;
+    /*color: #FFFFFF;*/
+}
+
+footer a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+.top-scroll {
+    margin-top: 50px;
+}
+
+.top-scroll a {
+    text-decoration: none;
+    color: inherit;
+}
+
+i.scroll {
+    color: #333333;
+}
+
+i.scroll:hover {
+    color: #0a5175;
+}
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .header {
+        background: url(../img/bg.jpg) no-repeat center center scroll;
+    }
+
+    .portfolio {
+        background: url(../img/portfolio.jpg) no-repeat center center scroll;
+        padding: 20px 0;
+    }
+
+    .img-technology,
+    .img-portfolio {
+        width: auto
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .contact-form,
+    .lastfm-top-tracks
+    {
+        /*margin: 0 auto;*/
+        width: 100%
+    }
+
+}

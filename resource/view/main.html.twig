@@ -1,17 +1,55 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        {% block head %}
-            {#<link rel="stylesheet" href="style.css" />#}
-            <title>{% block title %}{% endblock %} - My Webpage</title>
-        {% endblock %}
-    </head>
-    <body>
-        <div id="content">{% block content %}{% endblock %}</div>
-        <div id="footer">
-            {% block footer %}
-                &copy; Copyright 2016 by <a href="/">you</a>.
-            {% endblock %}
-        </div>
-    </body>
+<head>
+    <title>{{'main.title'|trans}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Czarnoksięskie sztuczki związane z tworzeniem aplikacji
+              internetowych, źródłowo udokumentowane oraz zabawnie podane.
+              Tego drugiego wcale nie jestem pewien.">
+    <meta name="keywords" content="web development, humor,
+              portfolio, php, symfony2, bootstrap, jquery, javascript, js, css"/>
+    <meta name="author" content="">
+    {% block stylesheets %}
+        <style>
+            {#inline css for pagespeed#}
+            {{ source('css/style.min.css') }}
+        </style>
+
+    {% endblock %}
+
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+<body>
+{% block body_content %}
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/scripts.min.js') }}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js"></script>
+    <script>
+        WebFont.load({
+            google: { families: [ 'Open+Sans:400,600:latin-ext' ] }
+        });
+    </script>
+    <!-- Piwik -->
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u = (("https:" == document.location.protocol) ? "https" : "http") + "://piwik.linuxpl.com/";
+            _paq.push(['setTrackerUrl', u + 'piwik.php']);
+            _paq.push(['setSiteId', 7658]);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.defer = true;
+            g.async = true;
+            g.src = u + '/js/';
+            s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+{% endblock %}
+
+<noscript><p><img src="http://piwik.linuxpl.com/piwik.php?idsite=7658" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+</body>
 </html>
