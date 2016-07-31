@@ -1,0 +1,69 @@
+main:
+    title: "Szaleńczo dobre kreacje | insanet.pl"
+    header:
+        insanely: "Szaleńczo"
+        crazily: "niesamowicie"
+        creations: "dobre kreacje"
+        enchanting: "czarujące wykonanie"
+        clickme: "Kliknij mnie!"
+intro:
+    tagline: "Niezwykły nagłówek mający wywołać piorunujące wrażenie"
+    tagline2: "Piękny tekst motywujący"
+
+
+skills:
+    title: "Umiejętności"
+    frontend:
+        title: "Frontend"
+        description: "Responsywność bootstrapowa jak i customowa. Czysto i przejrzyście."
+    backend:
+        title: "Backend"
+        description: "Dominują Symfoniczne arie i Doctrine'owe manipulacje, bogato doprawione precyzyjnie dobranymi bundlami, odpowiednio do zamierzeń autora."
+    admin:
+        title: "Administracja"
+        description: "LAMPowo Debianowa, bezpiecznie backupowa, zdrowo doprawiona SSH, rsync'iem, tail'em, grep'em oraz szczyptą vim'a i jaśnie czarną magią. Wielce terminalove ekscesy."
+    joke:
+        title: "Humor"
+        description1: "Co zero powiedziało do ósemki?"
+        description2: "\"Fajny masz pasek\""
+
+technology:
+    title: "Technologie"
+
+lastfm:
+    favs:
+        title: "Ulubione utwory z ostatnich 7 dni"
+    error1: "Błąd pobierania wyników z LastFM:("
+    error2: "Spróbuj odświeżyć stronę."
+
+contact:
+    title: "Wyślij wiadomość, to odpiszę"
+
+    label:
+        name: "Twoje imię:"
+        email: "Twój adres e-mail:"
+        subject: "Temat wiadomości:"
+        message: "Treść wiadomości:"
+    placeholder:
+        name: "Twoje imię:"
+        email: "Twój adres e-mail:"
+        subject: "Temat:"
+        message: "Treść:"
+    flash:
+        sent: "Wiadomość została wysłana."
+    submit: "Wyślij wiadomość"
+
+lastmod:
+    content: "Data ostatniej modyfikacji strony:"
+
+sidebar:
+    home: "Dom"
+    author: "Autor"
+    skills: "Umiejętności"
+    portfolio: "Projekty"
+    technology: "Technologie"
+    bonus: "Bonus"
+    contact: "Kontakt"
+
+tooltips:
+

@@ -3,7 +3,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\Translation\Loader\YamlFileLoader;
 
 use Silex\Provider\LocaleServiceProvider;
 use Silex\Provider\FormServiceProvider;
@@ -46,10 +46,19 @@ $app->register(new AssetServiceProvider(), array(
     'assets.version_format' => '%s?version=%s'
 ));
 
+$app->extend('translator', function($translator) {
+    $translator->addLoader('yaml', new YamlFileLoader());
+
+    $translator->addResource('yaml', __DIR__.'/../resource/translation/pl.yml', 'pl');
+    $translator->addResource('yaml', __DIR__.'/../resource/translation/en.yml', 'en');
+
+    return $translator;
+});
+
 //set proxy
 Request::setTrustedProxies(array('127.0.0.1'));
 
-$app['locale'] = 'pl';
+$app['locale'] = 'en';
 
 $app->get(
     '/',
