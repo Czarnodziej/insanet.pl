@@ -217,26 +217,26 @@
     <div id="contact">
         <div class="text-center contact-form">
 
-            {% for label, flashes in app.session.flashbag.all %}
-                {% for flash in flashes %}
-                    <div class="alert alert-{{ label }}">
-                        {{ flash | trans }}
+            {% if errors|length > 0 %}
+                {% for error in errors %}
+                    <div class="alert">
+                        {{ error | trans }}
                     </div>
                 {% endfor %}
-            {% endfor %}
+            {% endif %}
 
             <div class="panel-heading contact-heading">
                 <h4>{{ 'contact.title'|trans }}</h4>
             </div>
-            <div class="panel-body>
+            <div class="panel-body">
             <form action="#contact" method="post"
             class="form-horizontal">
-            {#{{ form_widget(form) }}#}
-            {#<div>#}
-                {#<input class="btn btn-success btn-block button-submit"#}
-                       {#type="submit" value="{{ 'contact.submit'|trans }}"/>#}
-            {#</div>#}
-            {#</form>#}
+            {{ form_widget(form) }}
+            <div>
+                <input class="btn btn-success btn-block button-submit"
+                       type="submit" value="{{ 'contact.submit'|trans }}"/>
+            </div>
+            </form>
         </div>
     </div>
     <!-- /Contact Form -->
