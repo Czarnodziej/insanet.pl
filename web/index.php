@@ -20,10 +20,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 
 $app = new Silex\Application();
-require_once __DIR__.'/../config.php';
 
-$app['lastFMApiKey'] = $lastFMapiKey;
-$app['debug']        = true;
+require_once __DIR__.'/../config.php';
+$app['lastFMApiKey'] = $config['lastFMapiKey'];
+$app['debug']        = $config['debug'];
 
 //register services
 $app->register(
