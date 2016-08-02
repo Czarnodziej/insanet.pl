@@ -23,7 +23,7 @@ $app = new Silex\Application();
 require_once __DIR__.'/../config.php';
 
 $app['lastFMApiKey'] = $lastFMapiKey;
-$app['debug'] = true;
+$app['debug']        = true;
 
 //register services
 $app->register(
@@ -121,36 +121,37 @@ $app['lastFMTracks'] = function ($app) {
 
     $lastFMJson = __DIR__.'/../cache/lastfm.json';
 
-    if (!file_exists($lastFMJson) || file_exists($lastFMJson) && filemtime($lastFMJson) < strtotime('-6 hours')) {
+    //prevents needlessly overloading lastfm api endpoint
+    if ( ! file_exists($lastFMJson) || file_exists($lastFMJson) && filemtime($lastFMJson) < strtotime('-6 hours')) {
 
-        if (!file_exists($lastFMJson)) {
+        if ( ! file_exists($lastFMJson)) {
             touch($lastFMJson);
         }
 
         $opts = array(
-            'http'=>array(
-                'method'=>"GET",
-                'header'=>"App-name: Insanet.pl favorite tracks\r\n" .
-                          "Content-Type: application/json\r\n",
+            'http' => array(
+                'method'     => "GET",
+                'header'     => "App-name: Insanet.pl favorite tracks\r\n".
+                                "Content-Type: application/json\r\n",
                 "Accept: application/json\r\n",
-                'user_agent'=> $_SERVER['HTTP_USER_AGENT']
-            )
+                'user_agent' => $_SERVER['HTTP_USER_AGENT'],
+            ),
         );
 
         $context = stream_context_create($opts);
 
-        $url = 'http://ws.audioscrobbler.com/2.0/?'.
-               'method=user.gettoptracks'.
-               '&user=pagodemc'.
-               '&api_key='.$app['lastFMApiKey'].
-               '&period=7day'.
-               '&limit=5'.
-               '&format=json'
-        ;
+        $url     = 'http://ws.audioscrobbler.com/2.0/?'.
+                   'method=user.gettoptracks'.
+                   '&user=pagodemc'.
+                   '&api_key='.$app['lastFMApiKey'].
+                   '&period=7day'.
+                   '&limit=5'.
+                   '&format=json';
         $request = file_get_contents($url, false, $context);
         file_put_contents($lastFMJson, $request);
 
     }
+
     return json_decode(file_get_contents($lastFMJson));
 };
 
@@ -229,6 +230,18 @@ $form = $app['form.factory']->createBuilder(FormType::class)
                                 )
                             )
                             ->add(
+                                'dummy',
+                                TextType::class,
+                                array(
+                                    'label'    => false,
+                                    'required' => false,
+                                    'attr'     => array(
+                                        'placeholder' => 'test',
+                                        'class'       => 'col-sm-12 hidden',
+                                    ),
+                                )
+                            )
+                            ->add(
                                 'message',
                                 TextareaType::class,
                                 array(
@@ -266,13 +279,17 @@ $app->match(
             $form->handleRequest($request);
             if ($form->isValid()) {
 
+                if ($form->get('dummy')->getData()) {
+                    echo 'denied';
+                    exit;
+                }
                 $message = \Swift_Message::newInstance()
                                          ->setSubject($form->get('subject')->getData())
                                          ->setFrom('kontakt@insanet.pl')
                                          ->setTo('pagodemc@gmail.com')
                                          ->setBody(
                                              $app['twig']->render(
-                                                 'Mail/contact.html.twig',
+                                                 'mail/contact.html.twig',
                                                  array(
                                                      'ip'      => $request->getClientIp(),
                                                      'name'    => $form->get('name')->getData(),
@@ -298,38 +315,13 @@ $app->match(
             array(
                 'form'        => $form->createView(),
                 'pageModTime' => $app['pageModTime'],
-                'tracks' => $app['lastFMTracks']
+                'tracks'      => $app['lastFMTracks'],
             )
         );
 
         $response = new Response(
             $body,
             200,
-            array('Cache-Control' => 's-maxage=3600, public')
-        );
-
-        return $response;
-    }
-);
-$app->get(
-    '/test',
-    function () {
-        return 'helo łorld';
-    }
-);
-
-$app->get(
-    '/hello/{name}',
-    function ($name) use ($app) {
-        $body = $app['twig']->render(
-            'hello.html.twig',
-            array(
-                'name' => $name,
-            )
-        );
-
-        $response = new Response(
-            $body, 200,
             array('Cache-Control' => 's-maxage=3600, public')
         );
 
