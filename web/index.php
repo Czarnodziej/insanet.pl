@@ -114,7 +114,6 @@ $app['pageModTime'] = function () {
     $mod_time  = max($mod_times);
 
     return $mod_time;
-    //return new Service();
 };
 
 $app['lastFMTracks'] = function ($app) {
@@ -229,6 +228,7 @@ $form = $app['form.factory']->createBuilder(FormType::class)
                                     ),
                                 )
                             )
+                            //basic antispam
                             ->add(
                                 'dummy',
                                 TextType::class,
@@ -272,8 +272,6 @@ $form = $app['form.factory']->createBuilder(FormType::class)
 $app->match(
     '/',
     function (Request $request) use ($app, $form) {
-
-        $errors = array();
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -322,7 +320,8 @@ $app->match(
         $response = new Response(
             $body,
             200,
-            array('Cache-Control' => 's-maxage=3600, public')
+            //one year reverse cache expiration
+            array('Cache-Control' => 's-maxage=31536000, public')
         );
 
         return $response;
