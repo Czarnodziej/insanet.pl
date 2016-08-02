@@ -305,6 +305,12 @@ i.scroll {
 i.scroll:hover {
     color: #0a5175;
 }
+
+#lastfm a:hover,
+#lastfm a:focus {
+    color: inherit;
+}
+
 /* Responsive */
 
 @media (max-width: 768px) {

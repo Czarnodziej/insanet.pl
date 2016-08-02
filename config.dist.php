@@ -1,0 +1,2 @@
+<?php
+$lastFMapiKey = '123';
