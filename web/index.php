@@ -11,7 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 use Silex\Provider\LocaleServiceProvider;
 use Silex\Provider\FormServiceProvider;
@@ -108,12 +107,21 @@ Request::setTrustedProxies(array('127.0.0.1'));
 
 $app['locale'] = 'en';
 
+//services
 
+$app['pageModTime'] = function () {
+    $incls = get_included_files();
+    $included = array_filter($incls, "is_file");
+    $mod_times = array_map('filemtime', $included);
+    $mod_time = max($mod_times);
+    return $mod_time;
+    //return new Service();
+};
 //create contact form
 $form = $app['form.factory']->createBuilder(FormType::class)
     ->add(
         'name',
-        null,
+        TextType::class,
         array(
             'label'       => false,
             'attr'        => array(
@@ -159,7 +167,7 @@ $form = $app['form.factory']->createBuilder(FormType::class)
     )
     ->add(
         'subject',
-        null,
+        TextType::class,
         array(
             'label'       => false,
             'attr'        => array(
@@ -246,7 +254,8 @@ $app->match(
 
         $body = $app['twig']->render(
             'home.html.twig',
-            array('form' => $form->createView())
+            array('form' => $form->createView(),
+                  'pageModTime'   => $app['pageModTime'])
         );
 
         $response = new Response(
