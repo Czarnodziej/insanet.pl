@@ -46,7 +46,7 @@ $app->register(
 $app->register(
     new AssetServiceProvider(),
     array(
-        'assets.version'        => 'v1',
+        'assets.version'        => '1',
         'assets.version_format' => '%s?version=%s',
     )
 );
