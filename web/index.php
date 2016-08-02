@@ -10,6 +10,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 use Silex\Provider\LocaleServiceProvider;
 use Silex\Provider\FormServiceProvider;
@@ -37,9 +39,6 @@ $app->register(new LocaleServiceProvider());
 
 $app->register(new SessionServiceProvider());
 
-
-$app->register(new FormServiceProvider());
-
 $app->register(
     new HttpCacheServiceProvider(),
     array(
@@ -55,7 +54,7 @@ $app->register(
     )
 );
 
-$app->register(new ValidatorServiceProvider());
+
 $app->register(
     new TranslationServiceProvider(),
     array(
@@ -71,6 +70,7 @@ $app->extend(
     function ($translator) {
         $translator->addLoader('yaml', new YamlFileLoader());
 
+        //main translations
         $translator->addResource(
             'yaml',
             __DIR__.'/../resource/translation/pl.yml',
@@ -82,9 +82,26 @@ $app->extend(
             'en'
         );
 
+        //validators
+        $translator->addResource(
+            'yaml',
+            __DIR__.'/../resource/translation/validators/validators.pl.yml',
+            'pl',
+            'validators'
+        );
+
+        $translator->addResource(
+            'yaml',
+            __DIR__.'/../resource/translation/validators/validators.en.yml',
+            'en',
+            'validators'
+        );
+
         return $translator;
     }
 );
+$app->register(new FormServiceProvider());
+$app->register(new ValidatorServiceProvider());
 
 //set proxy
 Request::setTrustedProxies(array('127.0.0.1'));
@@ -198,12 +215,6 @@ $app->match(
     function (Request $request) use ($app, $form) {
 
         $errors = array();
-        $body = $app['twig']->render(
-            'home.html.twig',
-            array('form' => $form->createView(),
-                  'errors' => $errors)
-        );
-
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -214,8 +225,8 @@ $app->match(
                     ->setFrom('kontakt@insanet.pl')
                     ->setTo('pagodemc@gmail.com')
                     ->setBody(
-                        $this->renderView(
-                            ':Mail:contact.html.twig',
+                        $app['twig']->render(
+                            'Mail/contact.html.twig',
                             array(
                                 'ip'      => $request->getClientIp(),
                                 'name'    => $form->get('name')->getData(),
@@ -226,19 +237,17 @@ $app->match(
                     );
 
 
-                $this->get('mailer')->send($message);
+                $app['mailer']->send($message);
+                $app['session']->getFlashBag()->add('success', 'contact.flash.sent');
 
-                $this->addFlash('success', 'contact.flash.sent');
-
-                return $this->redirect(
-                    $this->generateUrl('homepage').'#contact'
-                );
+                $app->redirect('/#contact', 301);
             }
-        } else {
-            $errors = $app['validator']->validate($form);
-            var_dump($errors);
-            exit;
         }
+
+        $body = $app['twig']->render(
+            'home.html.twig',
+            array('form' => $form->createView())
+        );
 
         $response = new Response(
             $body,
