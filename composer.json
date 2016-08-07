@@ -10,7 +10,12 @@
         "symfony/twig-bridge": "^3.1",
         "symfony/asset": "^3.1",
         "symfony/yaml": "^3.1",
-        "swiftmailer/swiftmailer": "^5.4"
+        "swiftmailer/swiftmailer": "^5.4",
+        "silex/web-profiler": "^2.0",
+        "symfony/debug": "^3.1"
+    },
+    "autoload": {
+        "psr-0": { "": "src/" }
     },
     "require-dev": {
         "symfony/browser-kit": "^3.1",

@@ -1,5 +1,6 @@
 vendor
 .idea
-cache/
 node_modules/
-config.php
+var/cache/*
+var/logs/*
+config/parameters.php
