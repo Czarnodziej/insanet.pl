@@ -1,8 +1,8 @@
 <?php
 
+use Silex\Provider\SwiftmailerServiceProvider;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Silex\Provider\SwiftmailerServiceProvider;
 
 require __DIR__.'/../src/services.php';
 
@@ -12,20 +12,21 @@ $forms = require __DIR__.'/../src/forms.php';
 
 Request::setTrustedProxies(array('127.0.0.1'));
 
+$contactForm = $forms['contactForm'];
 $app->match(
     '/',
-    function (Request $request) use ($app, $forms) {
+    function (Request $request) use ($app, $contactForm) {
 
         if ($request->isMethod('POST')) {
-            $forms->handleRequest($request);
-            if ($forms->isValid()) {
+            $contactForm->handleRequest($request);
+            if ($contactForm->isValid()) {
 
-                if ($forms['contactForm']->get('dummy')->getData()) {
+                if ($contactForm->get('dummy')->getData()) {
                     echo 'denied';
                     exit;
                 }
                 $message = \Swift_Message::newInstance()
-                                         ->setSubject($forms['contactForm']->get('subject')->getData())
+                                         ->setSubject($contactForm->get('subject')->getData())
                                          ->setFrom('kontakt@insanet.pl')
                                          ->setTo('pagodemc@gmail.com')
                                          ->setBody(
@@ -33,9 +34,9 @@ $app->match(
                                                  'mail/contact.html.twig',
                                                  array(
                                                      'ip'      => $request->getClientIp(),
-                                                     'name'    => $forms['contactForm']->get('name')->getData(),
-                                                     'email'   => $forms['contactForm']->get('email')->getData(),
-                                                     'message' => $forms['contactForm']->get('message')->getData(),
+                                                     'name'    => $contactForm->get('name')->getData(),
+                                                     'email'   => $contactForm->get('email')->getData(),
+                                                     'message' => $contactForm->get('message')->getData(),
                                                  )
                                              )
                                          );
@@ -54,7 +55,7 @@ $app->match(
         $body = $app['twig']->render(
             'home.html.twig',
             array(
-                'form'        => $forms['contactForm']->createView(),
+                'form'        => $contactForm->createView(),
                 'pageModTime' => $app['pageModTime'],
                 'tracks'      => $app['lastFMTracks'],
             )
