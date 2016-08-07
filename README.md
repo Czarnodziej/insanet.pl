@@ -6,6 +6,10 @@ Base components:
 - translation
 - gulp.js
 
+Dev components:
+- monolog
+- web-profiler
+
 Target:
 - DRY and simple
 - tested
