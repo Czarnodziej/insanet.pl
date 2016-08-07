@@ -15,3 +15,6 @@ Target:
 - tested
 - clean
 - Google PageSpeed 100
+
+TODO:
+- swiftmailer test
