@@ -63,8 +63,8 @@ $app->match(
         $response = new Response(
             $body,
             200,
-            //one year reverse proxy cache expiration
-            array('Cache-Control' => 's-maxage=31536000, public')
+            //six hours reverse proxy cache expiration
+            array('Cache-Control' => 's-maxage=21600, public')
         );
 
         return $response;
