@@ -18,5 +18,6 @@ Target:
 
 TODO:
 - swiftmailer test
+- page response test
 
 © Insanet.pl 2016

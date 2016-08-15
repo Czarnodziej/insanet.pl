@@ -24,6 +24,6 @@ class MainTest extends WebTestCase
         $this->assertCount(1, $crawler->filter('#about'));
         $this->assertCount(1, $crawler->filter('#skills'));
         $this->assertCount(1, $crawler->filter('#portfolio'));
-        $this->assertCount(5, $crawler->filter('#lastfm li'));
+        $this->assertCount(1, $crawler->filter('#lastfm'));
     }
 }
