@@ -19,5 +19,4 @@ Target:
 TODO:
 - swiftmailer test
 - separate route for mail post
-- lastfm dev override (prevent overloading their api)
-- detect language and serve english version
+- console command to clear cache

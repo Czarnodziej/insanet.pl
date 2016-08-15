@@ -125,6 +125,7 @@ gulp.task('watch', function () {
 
   gulp.watch(paths.scriptsCustom, ['jsCustom']);
   gulp.watch(paths.imagesCustom, ['imagesCustom']);
+  gulp.watch(paths.stylesCustom, ['cssConcat']);
 });
 
 //copy vendor fonts

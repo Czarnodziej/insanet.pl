@@ -13,11 +13,20 @@ $forms = require __DIR__.'/../src/forms.php';
 Request::setTrustedProxies(array('127.0.0.1'));
 
 $contactForm = $forms['contactForm'];
-$app->match(
-    '/',
-    function (Request $request) use ($app, $contactForm) {
 
-        $app['locale'] = $request->getLocale();
+$app->before(
+    function (Request $request) use ($app) {
+        if ($request->getPathInfo() == '/en')
+        $app['translator']->setLocale('en');
+        else {
+            $app['translator']->setLocale('pl');
+        }
+    }
+);
+
+$app->match(
+    '/{locale}',
+    function (Request $request) use ($app, $contactForm) {
 
         if ($request->isMethod('POST')) {
             $contactForm->handleRequest($request);
@@ -71,4 +80,4 @@ $app->match(
 
         return $response;
     }
-);
+)->value('locale', '/');;

@@ -117,6 +117,14 @@ body {
     z-index: 1;
 }
 
+#lang-toggle {
+    top: 1.3em;
+    right: 4.5em;
+    position: absolute;
+    z-index: 1;
+    color: white;
+}
+
 #sidebar-wrapper.active {
     right: 250px;
     width: 250px;

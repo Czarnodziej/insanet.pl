@@ -2,8 +2,15 @@
 {% block body_content %}
 
     <!-- Side Menu -->
+{% if app.translator.locale == 'pl' %}
+    <a id="lang-toggle" href="en">EN</a>
+{% else %}
+    <a id="lang-toggle" href="/">PL</a>
+{% endif %}
     <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
+
     <div id="sidebar-wrapper">
+
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle">
                 <i class="fa fa-times"></i>
