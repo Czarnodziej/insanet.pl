@@ -25,28 +25,27 @@ $app->match(
                     echo 'denied';
                     exit;
                 }
-                $message = \Swift_Message::newInstance()
-                                         ->setSubject($contactForm->get('subject')->getData())
-                                         ->setFrom('kontakt@insanet.pl')
-                                         ->setTo('pagodemc@gmail.com')
-                                         ->setBody(
-                                             $app['twig']->render(
-                                                 'mail/contact.html.twig',
-                                                 array(
-                                                     'ip'      => $request->getClientIp(),
-                                                     'name'    => $contactForm->get('name')->getData(),
-                                                     'email'   => $contactForm->get('email')->getData(),
-                                                     'message' => $contactForm->get('message')->getData(),
-                                                 )
-                                             )
-                                         );
 
+                $maildata = array();
+                $maildata['subject'] = $contactForm->get('subject')->getData();
+                $maildata['name'] = $contactForm->get('name')->getData();
+                $maildata['email'] = $contactForm->get('email')->getData();
+                $maildata['message'] = $contactForm->get('message')->getData();
 
-                $app['mailer']->send($message);
-                $app['session']->getFlashBag()->add(
-                    'success',
-                    'contact.flash.sent'
-                );
+                $sendContactEmail = $app['mail'];
+
+                if($sendContactEmail($request, $maildata, $app)) {
+                    $app['session']->getFlashBag()->add(
+                        'success',
+                        'contact.flash.sent'
+                    );
+                } else {
+                    $app['session']->getFlashBag()->add(
+                        'error',
+                        'contact.flash.notsent'
+                    );
+
+                };
 
                 $app->redirect('/#contact', 301);
             }

@@ -17,4 +17,4 @@ Target:
 - Google PageSpeed 100
 
 TODO:
-- swiftmailer test
+- swiftmailer extract to service && test

@@ -46,3 +46,24 @@ $app['pageModTime'] = function () {
 
     return $mod_time;
 };
+
+$app['mail'] = $app->protect(function($request, $maildata, $app) {
+    $message = \Swift_Message::newInstance()
+                             ->setSubject($maildata['subject'])
+                             ->setFrom('kontakt@insanet.pl')
+                             ->setTo('pagodemc@gmail.com')
+                             ->setBody(
+                                 $app['twig']->render(
+                                     'mail/contact.html.twig',
+                                     array(
+                                         'ip'      => $request->getClientIp(),
+                                         'name'    => $maildata['name'],
+                                         'email'   => $maildata['email'],
+                                         'message' => $maildata['message'],
+                                     )
+                                 )
+                             );
+
+
+    return $app['mailer']->send($message);
+});

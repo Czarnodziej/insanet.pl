@@ -51,6 +51,7 @@ contact:
         message: "Treść:"
     flash:
         sent: "Wiadomość została wysłana."
+        notsent: "Wystąpił problem z wysyłaniem wiadomości"
     submit: "Wyślij wiadomość"
 
 lastmod:
