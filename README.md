@@ -17,4 +17,7 @@ Target:
 - Google PageSpeed 100
 
 TODO:
-- swiftmailer extract to service && test
+- swiftmailer test
+- separate route for mail post
+- lastfm dev override (prevent overloading their api)
+- detect language and serve english version

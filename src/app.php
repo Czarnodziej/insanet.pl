@@ -8,6 +8,7 @@ use Symfony\Component\Translation\Loader\YamlFileLoader;
 
 $app = new Silex\Application();
 
+$app['debug'] = $config['debug'];
 $app['lastFMApiKey'] = $parameters['lastFMapiKey'];
 
 //register services
@@ -34,7 +35,7 @@ $app->register(
     new TranslationServiceProvider(),
     array(
         'translator.domains' => array(),
-        'locale_fallbacks'   => array('pl'),
+        'locale_fallbacks'   => array($app['locale']),
     )
 );
 
@@ -73,8 +74,6 @@ $app->extend(
         return $translator;
     }
 );
-
-$app['locale'] = $parameters['mainLocale'];
 
 return $app;
 

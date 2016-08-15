@@ -1,13 +1,13 @@
 main:
     title: "Crazy good things| insanet.pl"
     header:
-        insanely: "Szaleńczo"
-        crazily: "niesamowicie"
-        creations: "dobre kreacje"
-        enchanting: "czarujące wykonanie"
-        clickme: "Kliknij mnie!"
+        insanely: "Crazy"
+        crazily: "unbelieveably"
+        creations: "good things"
+        enchanting: "charming design"
+        clickme: "Click me!"
 intro:
-    tagline: "Niezwykły nagłówek mający wywołać piorunujące wrażenie"
+    tagline: "Great header, which should impress you"
     tagline2: "Piękny tekst motywujący"
 
 

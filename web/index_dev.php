@@ -15,8 +15,8 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
 }
 require_once __DIR__.'/../vendor/autoload.php';
 require __DIR__.'/../config/dev.php';
-Debug::enable();
 $app = require __DIR__.'/../src/app.php';
+Debug::enable();
 
 $app->register(new MonologServiceProvider(), array(
     'monolog.logfile' => __DIR__.'/../var/logs/silex_dev.log',

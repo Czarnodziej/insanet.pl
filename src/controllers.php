@@ -17,6 +17,8 @@ $app->match(
     '/',
     function (Request $request) use ($app, $contactForm) {
 
+        $app['locale'] = $request->getLocale();
+
         if ($request->isMethod('POST')) {
             $contactForm->handleRequest($request);
             if ($contactForm->isValid()) {
