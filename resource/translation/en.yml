@@ -8,63 +8,63 @@ main:
         clickme: "Click me!"
 intro:
     tagline: "Great header, which should impress you"
-    tagline2: "Piękny tekst motywujący"
+    tagline2: "Beautiful motivational phrase"
 
 
 skills:
-    title: "Umiejętności"
+    title: "Skillset"
     frontend:
         title: "Frontend"
-        description: "Responsywność bootstrapowa jak i customowa. Czysto i przejrzyście."
+        description: "Fully responsive and bootstraped. Shiny and clean"
     backend:
         title: "Backend"
-        description: "Dominują Symfoniczne arie i Doctrine'owe manipulacje, bogato doprawione precyzyjnie dobranymi bundlami, odpowiednio do zamierzeń autora."
+        description: "Symfonic arias with Doctrine notes."
     admin:
-        title: "Administracja"
-        description: "LAMPowo Debianowa, bezpiecznie backupowa, zdrowo doprawiona SSH, rsync'iem, tail'em, grep'em oraz szczyptą vim'a i jaśnie czarną magią. Wielce terminalove ekscesy."
+        title: "Server administration"
+        description: "It works reliably and fast, using most suitable tools."
     joke:
         title: "Humor"
-        description1: "Co zero powiedziało do ósemki?"
-        description2: "\"Fajny masz pasek\""
+        description1: "What zero said to eight?"
+        description2: "\"You have nice belt\""
 
 technology:
-    title: "Technologie"
+    title: "Technology"
 
 lastfm:
     favs:
-        title: "Ulubione utwory z ostatnich 7 dni"
-    error1: "Błąd pobierania wyników z LastFM:("
-    error2: "Spróbuj odświeżyć stronę."
+        title: "Favorite song from last 7 days"
+    error1: "LastFM connection error:("
+    error2: "Please try to refresh page."
 
 contact:
-    title: "Wyślij wiadomość, to odpiszę"
+    title: "Send me a message and I will reply"
 
     label:
-        name: "Twoje imię:"
-        email: "Twój adres e-mail:"
-        subject: "Temat wiadomości:"
-        message: "Treść wiadomości:"
+        name: "Name:"
+        email: "E-mail:"
+        subject: "Subject:"
+        message: "Message:"
     placeholder:
-        name: "Twoje imię:"
-        email: "Twój adres e-mail:"
-        subject: "Temat:"
-        message: "Treść:"
+        name: "Name:"
+        email: "E-mail:"
+        subject: "Subject:"
+        message: "Message:"
     flash:
-        sent: "Wiadomość została wysłana."
-        notsent: "Wystąpił problem z wysyłaniem wiadomości"
-    submit: "Wyślij wiadomość"
+        sent: "Message sent successfully."
+        notsent: "There was an error sending message :("
+    submit: "Send a message"
 
 lastmod:
-    content: "Data ostatniej modyfikacji strony:"
+    content: "Last update:"
 
 sidebar:
-    home: "Dom"
-    author: "Autor"
-    skills: "Umiejętności"
-    portfolio: "Projekty"
-    technology: "Technologie"
+    home: "Home"
+    author: "Author"
+    skills: "Skills"
+    portfolio: "Projects"
+    technology: "Technologies"
     bonus: "Bonus"
-    contact: "Kontakt"
+    contact: "Contact"
 
 tooltips:
 
