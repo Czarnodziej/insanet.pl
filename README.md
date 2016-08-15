@@ -20,3 +20,5 @@ TODO:
 - swiftmailer test
 - separate route for mail post
 - console command to clear cache
+
+© Insanet.pl 2016

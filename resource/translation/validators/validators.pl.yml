@@ -1,13 +1,13 @@
 contact:
     name:
-        not_blank: Wpisz swoje imię.
-        min_message: "Twoje imię powinno zawierać minimum {{ limit }} znaki."
+        not_blank: Type your name
+        min_message: "Name should have at least {{ limit }} characters."
     email:
-        not_blank: Wpisz swój adres e-mail.
+        not_blank: Type your e-mail.
         valid: Wpisz prawidłowy adres e-mail.
     subject:
-        not_blank: Wpisz temat wiadomości.
-        min_message: "Temat wiadomośći powinien mieć minimum {{ limit }} znaki."
+        not_blank: Type your subject.
+        min_message: "Subject should have at least {{ limit }} characters."
     message:
-        not_blank: Wpisz wiadomość.
-        min_message: "Treść wiadomości powinna mieć minimum {{ limit }} znaków."
+        not_blank: Type your message.
+        min_message: "Mesage should have at least {{ limit }} characters."
