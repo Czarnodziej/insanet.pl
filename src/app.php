@@ -8,7 +8,10 @@ use Symfony\Component\Translation\Loader\YamlFileLoader;
 
 $app = new Silex\Application();
 $app['locale'] = 'pl';
-$app['debug'] = $config['debug'];
+
+if (!empty($config['debug'])) {
+    $app['debug'] = true;
+}
 $app['lastFMApiKey'] = $parameters['lastFMapiKey'];
 
 //register services

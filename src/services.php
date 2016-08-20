@@ -1,6 +1,5 @@
 <?php
 $app['cache.dir']    = $config['cache.dir'];
-$test = $app['debug'];
 $app['lastFMTracks'] = function ($app) {
 
     if($app['debug']){
@@ -26,9 +25,13 @@ $app['lastFMTracks'] = function ($app) {
                '&period=7day'.
                '&limit=5'.
                '&format=json';
-    $request = file_get_contents($url, false, $context);
+    $content = file_get_contents($url, false, $context);
 
-    return json_decode($request);
+    if($content === FALSE) {
+       return false;
+    }
+
+    return json_decode($content);
 };
 
 $app['pageModTime'] = function () {

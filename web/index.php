@@ -15,5 +15,5 @@ $app->register(
 );
 
 require __DIR__.'/../src/controllers.php';
-
+ini_set('display_errors', '0');
 $app['http_cache']->run();
