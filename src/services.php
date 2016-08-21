@@ -6,32 +6,43 @@ $app['lastFMTracks'] = function ($app) {
         return false;
     }
 
-    $opts = array(
-        'http' => array(
-            'method'     => "GET",
-            'header'     => "App-name: Insanet.pl favorite tracks\r\n".
-                            "Content-Type: application/json\r\n",
-            "Accept: application/json\r\n",
-            'user_agent' => 'insanet-silex.dev/#lastfm periodic curl favorite tracks v1',
-        ),
+    $headers = array(
+        'method'     => "GET",
+        'header'     => "App-name: Insanet.pl favorite tracks\r\n".
+                        "Content-Type: application/json\r\n",
+                        "Accept: application/json\r\n",
+        'user_agent' => 'insanet-silex.dev/#lastfm periodic curl favorite tracks v1',
     );
 
-    $context = stream_context_create($opts);
+    $url = 'http://ws.audioscrobbler.com/2.0/?'.
+           'method=user.gettoptracks'.
+           '&user=pagodemc'.
+           '&api_key='.$app['lastFMApiKey'].
+           '&period=7day'.
+           '&limit=5'.
+           '&format=json';
 
-    $url     = 'http://ws.audioscrobbler.com/2.0/?'.
-               'method=user.gettoptracks'.
-               '&user=pagodemc'.
-               '&api_key='.$app['lastFMApiKey'].
-               '&period=7day'.
-               '&limit=5'.
-               '&format=json';
-    $content = file_get_contents($url, false, $context);
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    $result = curl_exec($curl);
+    curl_close($curl);
 
-    if($content === FALSE) {
-       return false;
+    $jsonResultFile = $app['cache.dir'].'/lastfm.json';
+
+    if (!$result) {
+
+        if(file_get_contents($jsonResultFile)) {
+           return file_get_contents($jsonResultFile);
+        }
+        return false;
     }
 
-    return json_decode($content);
+    $jsonResult = json_decode($result);
+
+    file_put_contents($jsonResultFile, $result);
+    return $jsonResult;
 };
 
 $app['pageModTime'] = function () {
