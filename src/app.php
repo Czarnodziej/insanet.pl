@@ -13,6 +13,8 @@ if (!empty($config['debug'])) {
     $app['debug'] = true;
 }
 $app['lastFMApiKey'] = $parameters['lastFMapiKey'];
+$app['enDomain'] = $parameters['enDomain'];
+$app['plDomain'] = $parameters['plDomain'];
 
 //register services
 $app->register(

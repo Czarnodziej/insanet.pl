@@ -29,7 +29,7 @@ $app['lastFMTracks'] = function ($app) {
     $result = curl_exec($curl);
     curl_close($curl);
 
-    $jsonResultFile = $app['cache.dir'].'/lastfm.json';
+    $jsonResultFile = $app['cache.dir'].'lastfm.json';
 
     if (!$result) {
 

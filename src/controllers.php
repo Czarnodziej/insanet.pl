@@ -16,8 +16,10 @@ $contactForm = $forms['contactForm'];
 
 $app->before(
     function (Request $request) use ($app) {
-        if ($request->getPathInfo() == '/en')
-        $app['translator']->setLocale('en');
+
+        if ($request->getHost() === $app['enDomain']) {
+            $app['translator']->setLocale('en');
+        }
         else {
             $app['translator']->setLocale('pl');
         }
