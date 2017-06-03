@@ -58,6 +58,7 @@ $app['mail'] = $app->protect(
     function ($request, $maildata, $app) {
         $message = \Swift_Message::newInstance()
                                  ->setSubject($maildata['subject'])
+                                 ->setFrom('kontakt@insanet.pl')
                                  ->setTo('pagodemc@gmail.com')
                                  ->setBody(
                                      $app['twig']->render(
