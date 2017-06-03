@@ -10,8 +10,6 @@ $app->register(new SwiftmailerServiceProvider());
 
 $forms = require __DIR__.'/../src/forms.php';
 
-Request::setTrustedProxies(array('127.0.0.1'));
-
 $contactForm = $forms['contactForm'];
 
 $app->before(
