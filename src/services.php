@@ -71,7 +71,8 @@ $app['mail'] = $app->protect(
                                          )
                                      )
                                  );
-
+$test = $app['swiftmailerSmtp'];
+        $app['swiftmailer.options'] = $app['swiftmailerSmtp'];
 
         return $app['mailer']->send($message);
     }

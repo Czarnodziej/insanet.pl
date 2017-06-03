@@ -15,6 +15,7 @@ if (!empty($config['debug'])) {
 $app['lastFMApiKey'] = $parameters['lastFMapiKey'];
 $app['enDomain'] = $parameters['enDomain'];
 $app['plDomain'] = $parameters['plDomain'];
+$app['swiftmailerSmtp'] = $parameters['swiftmailerSmtp'];
 
 //register services
 $app->register(
