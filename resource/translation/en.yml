@@ -2,14 +2,13 @@ main:
     title: "Crazy good things| insanet.eu"
     header:
         insanely: "Crazy"
-        crazily: "unbelieveably"
+        crazily: "unbelievably"
         creations: "good things"
         enchanting: "charming design"
         clickme: "Click me!"
 intro:
     tagline: "Great header, which should impress you"
     tagline2: "Beautiful motivational phrase"
-
 
 skills:
     title: "Skillset"
