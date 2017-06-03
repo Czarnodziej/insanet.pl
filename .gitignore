@@ -4,3 +4,4 @@ node_modules/
 var/cache/*
 var/logs/*
 config/parameters.php
+composer.phar
