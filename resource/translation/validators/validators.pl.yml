@@ -10,4 +10,8 @@ contact:
         min_message: "Temat wiadomości powinien mieć minimum{{ limit }} znaków."
     message:
         not_blank: Treść wiadomości jest wymagana.
+<<<<<<< HEAD
         min_message: "wiadomość powinna mieć minimum {{ limit }} znaków."
+=======
+        min_message: "wiadomość powinna mieć minimum {{ limit }} znaków."
+>>>>>>> d87f8278ec9f2368a0867e4918eebfec71ba6ca9
