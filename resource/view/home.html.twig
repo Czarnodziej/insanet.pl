@@ -220,38 +220,6 @@
     </div>
     <!-- /LastFM  -->
 
-    <!-- Contact Form -->
-    <div id="contact">
-        <div class="text-center contact-form">
-                {% if app.session.flashbag.peekAll()|length > 0 %}
-                    <div id="flash">
-                        {# Loop all types of flash messages #}
-                        {% for type, flashMessages in app.session.flashbag.all() %}
-                            {# For all flash messages with this type #}
-                            {% for flashMessage in flashMessages %}
-                                <div class="alert alert-{{ type }}">
-                                    {{ flashMessage|trans }}
-                                </div>
-                            {% endfor %}
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            <div class="panel-heading contact-heading">
-                <h4>{{ 'contact.title'|trans }}</h4>
-            </div>
-            <div class="panel-body">
-            <form action="#contact" method="post"
-            class="form-horizontal">
-            {{ form_widget(form) }}
-            <div>
-                <input class="btn btn-success btn-block button-submit"
-                       type="submit" value="{{ 'contact.submit'|trans }}"/>
-            </div>
-            </form>
-        </div>
-    </div>
-    <!-- /Contact Form -->
-
     <!-- Footer -->
     <footer>
         <div class="container">

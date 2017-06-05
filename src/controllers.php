@@ -26,41 +26,7 @@ $app->before(
 
 $app->match(
     '/{locale}',
-    function (Request $request) use ($app, $contactForm) {
-
-        if ($request->isMethod('POST')) {
-            $contactForm->handleRequest($request);
-            if ($contactForm->isValid()) {
-
-                if ($contactForm->get('dummy')->getData()) {
-                    echo 'denied';
-                    exit;
-                }
-
-                $maildata = array();
-                $maildata['subject'] = $contactForm->get('subject')->getData();
-                $maildata['name'] = $contactForm->get('name')->getData();
-                $maildata['email'] = $contactForm->get('email')->getData();
-                $maildata['message'] = $contactForm->get('message')->getData();
-
-                $sendContactEmail = $app['mail'];
-
-                if($sendContactEmail($request, $maildata, $app)) {
-                    $app['session']->getFlashBag()->add(
-                        'success',
-                        'contact.flash.sent'
-                    );
-                } else {
-                    $app['session']->getFlashBag()->add(
-                        'error',
-                        'contact.flash.notsent'
-                    );
-
-                };
-
-                $app->redirect('/#contact', 301);
-            }
-        }
+    function () use ($app, $contactForm) {
 
         $body = $app['twig']->render(
             'home.html.twig',
